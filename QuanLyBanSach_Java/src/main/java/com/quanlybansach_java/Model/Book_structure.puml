@@ -1,0 +1,340 @@
+@startuml
+
+/' diagram meta data start
+config=StructureConfiguration;
+{
+  "projectClassification": {
+    "searchMode": "OpenProject", // OpenProject, AllProjects
+    "includedProjects": "",
+    "pathEndKeywords": "*.impl",
+    "isClientPath": "",
+    "isClientName": "",
+    "isTestPath": "",
+    "isTestName": "",
+    "isMappingPath": "",
+    "isMappingName": "",
+    "isDataAccessPath": "",
+    "isDataAccessName": "",
+    "isDataStructurePath": "",
+    "isDataStructureName": "",
+    "isInterfaceStructuresPath": "",
+    "isInterfaceStructuresName": "",
+    "isEntryPointPath": "",
+    "isEntryPointName": "",
+    "treatFinalFieldsAsMandatory": false
+  },
+  "graphRestriction": {
+    "classPackageExcludeFilter": "",
+    "classPackageIncludeFilter": "",
+    "classNameExcludeFilter": "",
+    "classNameIncludeFilter": "",
+    "methodNameExcludeFilter": "",
+    "methodNameIncludeFilter": "",
+    "removeByInheritance": "", // inheritance/annotation based filtering is done in a second step
+    "removeByAnnotation": "",
+    "removeByClassPackage": "", // cleanup the graph after inheritance/annotation based filtering is done
+    "removeByClassName": "",
+    "cutMappings": false,
+    "cutEnum": true,
+    "cutTests": true,
+    "cutClient": true,
+    "cutDataAccess": false,
+    "cutInterfaceStructures": false,
+    "cutDataStructures": false,
+    "cutGetterAndSetter": true,
+    "cutConstructors": true
+  },
+  "graphTraversal": {
+    "forwardDepth": 6,
+    "backwardDepth": 6,
+    "classPackageExcludeFilter": "",
+    "classPackageIncludeFilter": "",
+    "classNameExcludeFilter": "",
+    "classNameIncludeFilter": "",
+    "methodNameExcludeFilter": "",
+    "methodNameIncludeFilter": "",
+    "hideMappings": false,
+    "hideDataStructures": false,
+    "hidePrivateMethods": true,
+    "hideInterfaceCalls": true, // indirection: implementation -> interface (is hidden) -> implementation
+    "onlyShowApplicationEntryPoints": false, // root node is included
+    "useMethodCallsForStructureDiagram": "ForwardOnly" // ForwardOnly, BothDirections, No
+  },
+  "details": {
+    "aggregation": "GroupByClass", // ByClass, GroupByClass, None
+    "showClassGenericTypes": true,
+    "showMethods": true,
+    "showMethodParameterNames": true,
+    "showMethodParameterTypes": true,
+    "showMethodReturnType": true,
+    "showPackageLevels": 2,
+    "showDetailedClassStructure": true
+  },
+  "rootClass": "com.quanlybansach_java.Model.Book",
+  "extensionCallbackMethod": "" // qualified.class.name#methodName - signature: public static String method(String)
+}
+diagram meta data end '/
+
+
+
+digraph g {
+    rankdir="TB"
+    splines=polyline
+    
+
+'nodes 
+subgraph cluster_860353053 { 
+   	label=quanlybansach_java
+	labeljust=l
+	fillcolor="#ececec"
+	style=filled
+   
+   subgraph cluster_1460609016 { 
+   	label=Model
+	labeljust=l
+	fillcolor="#d8d8d8"
+	style=filled
+   
+   Book599689275[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)Book</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   authorId: IntegerProperty [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   authorName: StringProperty [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   bookId: IntegerProperty [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   genre: StringProperty [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   price: DoubleProperty [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   publisherId: IntegerProperty [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   publisherName: StringProperty [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   purchase_price: DoubleProperty [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   quantityInStock: IntegerProperty [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   title: StringProperty [0..1]</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+} 
+
+subgraph cluster_1681065971 { 
+   	label=CONTROLLER
+	labeljust=l
+	fillcolor="#d8d8d8"
+	style=filled
+   
+   MainMenuController1498052704[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)MainMenuController</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   CustomerFigure: SplitPane [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   CustomerOrderCouponColumn: TableColumn&lt;Order, String&gt; [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   CustomerOrderDateColumn: TableColumn&lt;Order, Date&gt; [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   CustomerOrderIdColumn: TableColumn&lt;Order, Integer&gt; [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   CustomerOrderTableView: TableView&lt;Order&gt; [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   CustomerOrderTotalAmountColumn: TableColumn&lt;Order, Double&gt; [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   IdTextField: TextField [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   OrderPane: SplitPane [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   addAuthorButton: Button [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   addGenreButton: Button [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   addPublisherButton: Button [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   adminPermissionAnchorPane: AnchorPane [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   authorBookColumn: TableColumn&lt;Book, String&gt; [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   authorBookComboBox: ComboBox&lt;String&gt; [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   authorTextField: TextField [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   bookDAO: BookDAO [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   bookIdTextField: TextField [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   bookNameComboBox: ComboBox&lt;String&gt; [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   bookNameComboBox1: ComboBox&lt;String&gt; [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   bookPane: TabPane [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   bookTable: TableView&lt;Book&gt; [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   centerPane: Pane [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   couponIdColumn: TableColumn&lt;DiscountCoupon, String&gt; [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   couponPercentageColumn: TableColumn&lt;DiscountCoupon, Double&gt; [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   customerButton: Button [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   customerTable: TableView&lt;Customer&gt; [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   discountCouponsTableView: TableView&lt;DiscountCoupon&gt; [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   emailColumn: TableColumn&lt;Customer, String&gt; [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   firstNameColumn: TableColumn&lt;Customer, String&gt; [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   genreBookColumn: TableColumn&lt;Book, String&gt; [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   genreBookComboBox: ComboBox&lt;String&gt; [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   genreComboBox: ComboBox&lt;String&gt; [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   idBookColumn: TableColumn&lt;Book, Integer&gt; [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   idColumn: TableColumn&lt;Customer, Integer&gt; [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   itemIdTextField: TextField [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   lastNameColumn: TableColumn&lt;Customer, String&gt; [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   orderButton: Button [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   orderCouponColumn: TableColumn&lt;Order, String&gt; [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   orderCouponComboBox: ComboBox&lt;String&gt; [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   orderCustomerNameComboBox: ComboBox&lt;Integer&gt; [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   orderCutomerNameColumn: TableColumn&lt;Order, String&gt; [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   orderDateColumn: TableColumn&lt;Order, Date&gt; [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   orderDatePicker: DatePicker [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   orderIDClolumn: TableColumn&lt;Order, Integer&gt; [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   orderItemAnchorPane: AnchorPane [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   orderItemBookNameColumn: TableColumn&lt;OrderItems, String&gt; [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   orderItemIDColumn: TableColumn&lt;OrderItems, Integer&gt; [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   orderItemPriceColumn: TableColumn&lt;OrderItems, Double&gt; [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   orderItemQuantityColumn: TableColumn&lt;OrderItems, Integer&gt; [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   orderItemTableView: TableView&lt;OrderItems&gt; [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   orderItemTotalColumn: TableColumn&lt;OrderItems, Double&gt; [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   orderTableView: TableView&lt;Order&gt; [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   orderTotalAmountColumn: TableColumn&lt;Order, Double&gt; [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   orderUsernameColumn: TableColumn&lt;Order, String&gt; [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   phoneColumn: TableColumn&lt;Customer, String&gt; [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   priceBookColumn: TableColumn&lt;Book, Double&gt; [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   priceBookTextField: TextField [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   publisherBookColumn: TableColumn&lt;Book, String&gt; [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   publisherBookComboBox: ComboBox&lt;String&gt; [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   publisherTextField: TextField [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   purchaseOrderButton: Button [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   purchaseOrderDateColumn: TableColumn&lt;PurchaseOrder, Date&gt; [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   purchaseOrderDatePicker: DatePicker [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >+   purchaseOrderIDClolumn: TableColumn&lt;PurchaseOrder, Integer&gt; [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   purchaseOrderItemAnchorPane: AnchorPane [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   purchaseOrderItemBookNameColumn: TableColumn&lt;PurchaseOrderItems, String&gt; [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   purchaseOrderItemIDColumn: TableColumn&lt;PurchaseOrderItems, Integer&gt; [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   purchaseOrderItemPriceColumn: TableColumn&lt;PurchaseOrderItems, Double&gt; [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >+   purchaseOrderItemQuantityColumn: TableColumn&lt;PurchaseOrderItems, Integer&gt; [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   purchaseOrderItemTableView: TableView&lt;PurchaseOrderItems&gt; [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   purchaseOrderItemTotalColumn: TableColumn&lt;PurchaseOrderItems, Double&gt; [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   purchaseOrderPane: SplitPane [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   purchaseOrderPublisherNameColumn: TableColumn&lt;PurchaseOrder, String&gt; [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   purchaseOrderPublisherNameComboBox: ComboBox&lt;String&gt; [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   purchaseOrderTableView: TableView&lt;PurchaseOrder&gt; [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   purchaseOrderTotalAmountColumn: TableColumn&lt;PurchaseOrder, Double&gt; [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   purchaseOrderUsernameColumn: TableColumn&lt;PurchaseOrder, String&gt; [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   purchasepriceBookColumn: TableColumn&lt;Book, Double&gt; [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   purchasepriceBookTextField: TextField [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   quantityBookColumn: TableColumn&lt;Book, Integer&gt; [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   quantityBookTextField: TextField [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   quantityTextField: TextField [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   quantityTextField1: TextField [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   searchField: TextField [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   selectedAuthorId: int [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   selectedBookId: int [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   selectedCoupon: String [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   selectedCustomerId: int [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   selectedOrder: int [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   selectedOrderItem: int [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   selectedPublisherId: int [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   selectedPurchaseOrder: int [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   selectedPurchaseOrderItem: int [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   selectedSubmitButton: int [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   selectedUserId: int [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   showEmail: TextField [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   showFirstName: TextField [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   showId: Label [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   showLastName: TextField [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   showPhone: TextField [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >+   submitButton: Button [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   sumTotalAmount1: Label [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   sumTotalAmount11: Label [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   sumTotalAmountLabel: Label [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   titleBookColumn: TableColumn&lt;Book, String&gt; [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   titleBookTextField: TextField [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   titleFieldText: TextField [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   userCurrent: int [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   userEmailColumn: TableColumn&lt;User, String&gt; [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   userEmailLabel: Label [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   userEmailTX: TextField [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   userIdColumn: TableColumn&lt;User, Integer&gt; [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   userNameColumn: TableColumn&lt;User, String&gt; [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   userNameTX: TextField [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   userPassTX: TextField [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   userPassWordColumn: TableColumn&lt;User, String&gt; [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   userPerCB: ComboBox&lt;String&gt; [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   userPerColumn: TableColumn&lt;User, String&gt; [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   userPermissionLabel: Label [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   userPhoneColumn: TableColumn&lt;User, String&gt; [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   userPhoneLabel: Label [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   userPhoneTX: TextField [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   userSplitane: SplitPane [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   userTableView: TableView&lt;User&gt; [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   userUsernameColumn: TableColumn&lt;User, String&gt; [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   userUsernameTX: TextField [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   usserNameLabel: Label [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >- addBookButton()</TD></TR>
+<TR><TD ALIGN="LEFT" >- deleteBook()</TD></TR>
+<TR><TD ALIGN="LEFT" >- deleteCustomer()</TD></TR>
+<TR><TD ALIGN="LEFT" >- editBookButton()</TD></TR>
+<TR><TD ALIGN="LEFT" >- exportBooksToExcel()</TD></TR>
+<TR><TD ALIGN="LEFT" >- exportCouponsToExcel()</TD></TR>
+<TR><TD ALIGN="LEFT" >- exportCustomersToExcel()</TD></TR>
+<TR><TD ALIGN="LEFT" >- exportOrderItemsToExcel()</TD></TR>
+<TR><TD ALIGN="LEFT" >- exportOrderToExcel()</TD></TR>
+<TR><TD ALIGN="LEFT" >- fileExists(fileName: String): boolean</TD></TR>
+<TR><TD ALIGN="LEFT" >- generateNewOrder(): int</TD></TR>
+<TR><TD ALIGN="LEFT" >- generateNewOrderItems(order_id: int): int</TD></TR>
+<TR><TD ALIGN="LEFT" >- generateNewPurchaseOrder(): int</TD></TR>
+<TR><TD ALIGN="LEFT" >- generateNewPurchaseOrderItems(order_id: int): int</TD></TR>
+<TR><TD ALIGN="LEFT" >- handleAddAuthorButtonAction()</TD></TR>
+<TR><TD ALIGN="LEFT" >- handleAddCoupon()</TD></TR>
+<TR><TD ALIGN="LEFT" >- handleAddCustomer()</TD></TR>
+<TR><TD ALIGN="LEFT" >- handleAddGenreButtonAction()</TD></TR>
+<TR><TD ALIGN="LEFT" >- handleAddOrder()</TD></TR>
+<TR><TD ALIGN="LEFT" >- handleAddOrderItems()</TD></TR>
+<TR><TD ALIGN="LEFT" >- handleAddPublisherButtonAction()</TD></TR>
+<TR><TD ALIGN="LEFT" >- handleAddPurchaseOrder()</TD></TR>
+<TR><TD ALIGN="LEFT" >- handleAddPurchaseOrderItems()</TD></TR>
+<TR><TD ALIGN="LEFT" >- handleAddUser()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ handleBookSearchingButton()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ handleBookSearchingPane()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ handleClearBookSearch()</TD></TR>
+<TR><TD ALIGN="LEFT" >- handleClearCustomerSearch()</TD></TR>
+<TR><TD ALIGN="LEFT" >- handleCustomerSearch()</TD></TR>
+<TR><TD ALIGN="LEFT" >- handleDeleteCoupon()</TD></TR>
+<TR><TD ALIGN="LEFT" >- handleDeleteOrder()</TD></TR>
+<TR><TD ALIGN="LEFT" >- handleDeleteOrderItems()</TD></TR>
+<TR><TD ALIGN="LEFT" >- handleDeletePurchaseOrder()</TD></TR>
+<TR><TD ALIGN="LEFT" >- handleDeletePurchaseOrderItem()</TD></TR>
+<TR><TD ALIGN="LEFT" >- handleDeleteUser()</TD></TR>
+<TR><TD ALIGN="LEFT" >- handleEditCustomer()</TD></TR>
+<TR><TD ALIGN="LEFT" >- handleEditOrder()</TD></TR>
+<TR><TD ALIGN="LEFT" >- handleEditOrderItems()</TD></TR>
+<TR><TD ALIGN="LEFT" >- handleEditPurchaseOrder()</TD></TR>
+<TR><TD ALIGN="LEFT" >- handleEditPurchaseOrderItems()</TD></TR>
+<TR><TD ALIGN="LEFT" >- handleEditUser()</TD></TR>
+<TR><TD ALIGN="LEFT" >- handleExitMenuItem()</TD></TR>
+<TR><TD ALIGN="LEFT" >- handleOpenCouponManage()</TD></TR>
+<TR><TD ALIGN="LEFT" >- handleOpenOrderManagerPane()</TD></TR>
+<TR><TD ALIGN="LEFT" >- handleOpenPurchaseOrderManagerPane()</TD></TR>
+<TR><TD ALIGN="LEFT" >- handleReadersPane()</TD></TR>
+<TR><TD ALIGN="LEFT" >- handleUserPane()</TD></TR>
+<TR><TD ALIGN="LEFT" >- handleVersionMenuItem()</TD></TR>
+<TR><TD ALIGN="LEFT" >- initialize()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ showAddUser()</TD></TR>
+<TR><TD ALIGN="LEFT" >- showAlert(message: String)</TD></TR>
+<TR><TD ALIGN="LEFT" >- submitOnAction()</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+} 
+} 
+
+'edges    
+MainMenuController1498052704 -> Book599689275[label="authorBookColumn
+[0..1]"];
+MainMenuController1498052704 -> Book599689275[label="bookTable
+[0..1]"];
+MainMenuController1498052704 -> Book599689275[label="genreBookColumn
+[0..1]"];
+MainMenuController1498052704 -> Book599689275[label="idBookColumn
+[0..1]"];
+MainMenuController1498052704 -> Book599689275[label="priceBookColumn
+[0..1]"];
+MainMenuController1498052704 -> Book599689275[label="publisherBookColumn
+[0..1]"];
+MainMenuController1498052704 -> Book599689275[label="purchasepriceBookColumn
+[0..1]"];
+MainMenuController1498052704 -> Book599689275[label="quantityBookColumn
+[0..1]"];
+MainMenuController1498052704 -> Book599689275[label="titleBookColumn
+[0..1]"];
+    
+}
+@enduml

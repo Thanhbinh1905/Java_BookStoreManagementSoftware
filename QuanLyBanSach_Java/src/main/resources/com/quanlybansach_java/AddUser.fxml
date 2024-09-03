@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="234.0" prefWidth="294.0" xmlns="http://javafx.com/javafx/17.0.2-ea"
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.quanlybansach_java.CONTROLLER.AddUserController">
+   <Label layoutX="22.0" layoutY="25.0" text="Mã ĐG:"/>
+   <Label fx:id="idcustomer" layoutX="68.0" layoutY="25.0" text="..."/>
+   <Label layoutX="26.0" layoutY="48.0" text="Nhập thông tin:"/>
+   <Label layoutX="22.0" layoutY="75.0" text="Tên ĐG:"/>
+   <Label layoutX="22.0" layoutY="101.0" text="Họ ĐG:"/>
+   <Label layoutX="22.0" layoutY="128.0" text="Email:"/>
+   <Label layoutX="22.0" layoutY="157.0" text="SĐT:"/>
+   <TextField fx:id="firstnameField" layoutX="73.0" layoutY="71.0" prefHeight="25.0" prefWidth="191.0"/>
+   <TextField fx:id="lastNameField" layoutX="73.0" layoutY="97.0" prefHeight="25.0" prefWidth="191.0"/>
+   <TextField fx:id="emailField" layoutX="73.0" layoutY="124.0" prefHeight="25.0" prefWidth="191.0"/>
+   <TextField fx:id="phoneField" layoutX="73.0" layoutY="153.0" prefHeight="25.0" prefWidth="191.0"/>
+   <Button fx:id="AddButton" layoutX="101.0" layoutY="195.0" onAction="#addCustomer" prefHeight="25.0" prefWidth="92.0"
+           text="Tạo độc giả"/>
+</AnchorPane>

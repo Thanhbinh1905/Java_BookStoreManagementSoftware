@@ -1,0 +1,16 @@
+.hyperlink-no-underline {
+    -fx-border-color: transparent;
+    -fx-background-color: transparent;
+    -fx-text-decoration: none;
+    -fx-underline: false;
+    -fx-text-fill: black;
+}
+/* Tắt underline khi hovered */
+.hyperlink:hover {
+    -fx-text-decoration: none;
+}
+
+/* Tắt underline cho các hyperlink đã được truy cập */
+.hyperlink:visited {
+    -fx-text-decoration: none;
+}

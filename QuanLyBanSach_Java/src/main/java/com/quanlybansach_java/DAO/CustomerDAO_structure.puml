@@ -1,0 +1,152 @@
+@startuml
+
+/' diagram meta data start
+config=StructureConfiguration;
+{
+  "projectClassification": {
+    "searchMode": "OpenProject", // OpenProject, AllProjects
+    "includedProjects": "",
+    "pathEndKeywords": "*.impl",
+    "isClientPath": "",
+    "isClientName": "",
+    "isTestPath": "",
+    "isTestName": "",
+    "isMappingPath": "",
+    "isMappingName": "",
+    "isDataAccessPath": "",
+    "isDataAccessName": "",
+    "isDataStructurePath": "",
+    "isDataStructureName": "",
+    "isInterfaceStructuresPath": "",
+    "isInterfaceStructuresName": "",
+    "isEntryPointPath": "",
+    "isEntryPointName": "",
+    "treatFinalFieldsAsMandatory": false
+  },
+  "graphRestriction": {
+    "classPackageExcludeFilter": "",
+    "classPackageIncludeFilter": "",
+    "classNameExcludeFilter": "",
+    "classNameIncludeFilter": "",
+    "methodNameExcludeFilter": "",
+    "methodNameIncludeFilter": "",
+    "removeByInheritance": "", // inheritance/annotation based filtering is done in a second step
+    "removeByAnnotation": "",
+    "removeByClassPackage": "", // cleanup the graph after inheritance/annotation based filtering is done
+    "removeByClassName": "",
+    "cutMappings": false,
+    "cutEnum": true,
+    "cutTests": true,
+    "cutClient": true,
+    "cutDataAccess": false,
+    "cutInterfaceStructures": false,
+    "cutDataStructures": false,
+    "cutGetterAndSetter": true,
+    "cutConstructors": true
+  },
+  "graphTraversal": {
+    "forwardDepth": 6,
+    "backwardDepth": 6,
+    "classPackageExcludeFilter": "",
+    "classPackageIncludeFilter": "",
+    "classNameExcludeFilter": "",
+    "classNameIncludeFilter": "",
+    "methodNameExcludeFilter": "",
+    "methodNameIncludeFilter": "",
+    "hideMappings": false,
+    "hideDataStructures": false,
+    "hidePrivateMethods": true,
+    "hideInterfaceCalls": true, // indirection: implementation -> interface (is hidden) -> implementation
+    "onlyShowApplicationEntryPoints": false, // root node is included
+    "useMethodCallsForStructureDiagram": "ForwardOnly" // ForwardOnly, BothDirections, No
+  },
+  "details": {
+    "aggregation": "GroupByClass", // ByClass, GroupByClass, None
+    "showClassGenericTypes": true,
+    "showMethods": true,
+    "showMethodParameterNames": true,
+    "showMethodParameterTypes": true,
+    "showMethodReturnType": true,
+    "showPackageLevels": 2,
+    "showDetailedClassStructure": true
+  },
+  "rootClass": "com.quanlybansach_java.DAO.CustomerDAO",
+  "extensionCallbackMethod": "" // qualified.class.name#methodName - signature: public static String method(String)
+}
+diagram meta data end '/
+
+
+
+digraph g {
+    rankdir="TB"
+    splines=polyline
+    
+
+'nodes 
+subgraph cluster_860353053 { 
+   	label=quanlybansach_java
+	labeljust=l
+	fillcolor="#ececec"
+	style=filled
+   
+   subgraph cluster_1681065971 { 
+   	label=CONTROLLER
+	labeljust=l
+	fillcolor="#d8d8d8"
+	style=filled
+   
+   AddUserController1498052704[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)AddUserController</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   AddButton: Button [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   customerDAO: CustomerDAO [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   customers: List&lt;Customer&gt; [0..*]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   emailField: TextField [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   firstnameField: TextField [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   idcustomer: Label [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   lastNameField: TextField [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   phoneField: TextField [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >- addCustomer()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ generateNewCustomerId(): int</TD></TR>
+<TR><TD ALIGN="LEFT" >- initialize()</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+} 
+
+subgraph cluster_1951560671 { 
+   	label=DAO
+	labeljust=l
+	fillcolor="#d8d8d8"
+	style=filled
+   
+   CustomerDAO893219630[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)CustomerDAO</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ deleteCustomer(customerId: int)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getCustomerCount(customers: List&lt;Customer&gt;): int</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getCustomerIdByName(customerFirstName: String, customerLastName: String): int</TD></TR>
+<TR><TD ALIGN="LEFT" >+ insertCustomer(customer: Customer)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ searchCustomers(customers: List&lt;Customer&gt;, keyword: String): List&lt;Customer&gt;</TD></TR>
+<TR><TD ALIGN="LEFT" >+ updateCustomer(customer: Customer)</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+} 
+} 
+
+'edges    
+AddUserController1498052704 -> CustomerDAO893219630[label="customerDAO
+[0..1]"];
+    
+}
+@enduml

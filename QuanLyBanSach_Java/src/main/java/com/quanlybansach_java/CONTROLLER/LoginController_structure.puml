@@ -1,0 +1,184 @@
+@startuml
+
+/' diagram meta data start
+config=StructureConfiguration;
+{
+  "projectClassification": {
+    "searchMode": "OpenProject", // OpenProject, AllProjects
+    "includedProjects": "",
+    "pathEndKeywords": "*.impl",
+    "isClientPath": "",
+    "isClientName": "",
+    "isTestPath": "",
+    "isTestName": "",
+    "isMappingPath": "",
+    "isMappingName": "",
+    "isDataAccessPath": "",
+    "isDataAccessName": "",
+    "isDataStructurePath": "",
+    "isDataStructureName": "",
+    "isInterfaceStructuresPath": "",
+    "isInterfaceStructuresName": "",
+    "isEntryPointPath": "",
+    "isEntryPointName": "",
+    "treatFinalFieldsAsMandatory": false
+  },
+  "graphRestriction": {
+    "classPackageExcludeFilter": "",
+    "classPackageIncludeFilter": "",
+    "classNameExcludeFilter": "",
+    "classNameIncludeFilter": "",
+    "methodNameExcludeFilter": "",
+    "methodNameIncludeFilter": "",
+    "removeByInheritance": "", // inheritance/annotation based filtering is done in a second step
+    "removeByAnnotation": "",
+    "removeByClassPackage": "", // cleanup the graph after inheritance/annotation based filtering is done
+    "removeByClassName": "",
+    "cutMappings": false,
+    "cutEnum": true,
+    "cutTests": true,
+    "cutClient": true,
+    "cutDataAccess": false,
+    "cutInterfaceStructures": false,
+    "cutDataStructures": false,
+    "cutGetterAndSetter": true,
+    "cutConstructors": true
+  },
+  "graphTraversal": {
+    "forwardDepth": 6,
+    "backwardDepth": 6,
+    "classPackageExcludeFilter": "",
+    "classPackageIncludeFilter": "",
+    "classNameExcludeFilter": "",
+    "classNameIncludeFilter": "",
+    "methodNameExcludeFilter": "",
+    "methodNameIncludeFilter": "",
+    "hideMappings": false,
+    "hideDataStructures": false,
+    "hidePrivateMethods": true,
+    "hideInterfaceCalls": true, // indirection: implementation -> interface (is hidden) -> implementation
+    "onlyShowApplicationEntryPoints": false, // root node is included
+    "useMethodCallsForStructureDiagram": "ForwardOnly" // ForwardOnly, BothDirections, No
+  },
+  "details": {
+    "aggregation": "GroupByClass", // ByClass, GroupByClass, None
+    "showClassGenericTypes": true,
+    "showMethods": true,
+    "showMethodParameterNames": true,
+    "showMethodParameterTypes": true,
+    "showMethodReturnType": true,
+    "showPackageLevels": 2,
+    "showDetailedClassStructure": true
+  },
+  "rootClass": "com.quanlybansach_java.CONTROLLER.LoginController",
+  "extensionCallbackMethod": "" // qualified.class.name#methodName - signature: public static String method(String)
+}
+diagram meta data end '/
+
+
+
+digraph g {
+    rankdir="TB"
+    splines=polyline
+    
+
+'nodes 
+subgraph cluster_860353053 { 
+   	label=quanlybansach_java
+	labeljust=l
+	fillcolor="#ececec"
+	style=filled
+   
+   subgraph cluster_1497703840 { 
+   	label=utils
+	labeljust=l
+	fillcolor="#d8d8d8"
+	style=filled
+   
+   ResourceUtils562594451[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)ResourceUtils</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ getImage(imageName: String): Image</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+UserId562594451[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)UserId</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   user_id: int [1]</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+} 
+
+subgraph cluster_1681065971 { 
+   	label=CONTROLLER
+	labeljust=l
+	fillcolor="#d8d8d8"
+	style=filled
+   
+   LoginController1498052704[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)LoginController</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   passwordField: PasswordField [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   userId: UserId [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   usernameField: TextField [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >- handleLoginButtonAction()</TD></TR>
+<TR><TD ALIGN="LEFT" >- initialize()</TD></TR>
+<TR><TD ALIGN="LEFT" >- showMainMenu()</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+} 
+
+subgraph cluster_1951560671 { 
+   	label=DAO
+	labeljust=l
+	fillcolor="#d8d8d8"
+	style=filled
+   
+   UserDAO893219630[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)UserDAO</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ authenticateUser(username: String, password: String): boolean</TD></TR>
+<TR><TD ALIGN="LEFT" >+ deleteUser(user_id: int)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getPermissionById(user_id: int): String</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getUserId(username: String, password: String): UserId</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getUserId(username: String): UserId</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getUserInformationById(user_id: int): List&lt;User&gt;</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getUsername(userid: int): List&lt;String&gt;</TD></TR>
+<TR><TD ALIGN="LEFT" >+ insertUser(user: User)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ isUserExists(authorToCheck: String, userid: int): boolean</TD></TR>
+<TR><TD ALIGN="LEFT" >+ isUserExists(authorToCheck: String): boolean</TD></TR>
+<TR><TD ALIGN="LEFT" >+ updateUser(user: User)</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+} 
+} 
+
+'edges    
+LoginController1498052704 -> ResourceUtils562594451[label="showMainMenu() -> getImage()"];
+LoginController1498052704 -> UserId562594451[label="userId
+[0..1]"];
+    
+}
+@enduml

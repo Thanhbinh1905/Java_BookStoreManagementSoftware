@@ -1,0 +1,951 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="690.0" prefWidth="929.0" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.quanlybansach_java.CONTROLLER.MainMenuController">
+    <top>
+        <MenuBar BorderPane.alignment="CENTER">
+            <Menu text="Hệ Thống">
+                <MenuItem onAction="#handleVersionMenuItem" text="Phiên bản" />
+                <SeparatorMenuItem />
+                <MenuItem onAction="#handleExitMenuItem" text="Exit" />
+            </Menu>
+            <Menu onAction="#handleReadersPane" text="Quản lý khách hàng">
+                <MenuItem onAction="#handleReadersPane" text="Quản lý khách hàng" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" />
+            </Menu>
+            <Menu onAction="#handleBookSearchingPane" text="Quản lý sách">
+                <MenuItem onAction="#handleBookSearchingPane" text="Quản lý sách" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" />
+            </Menu>
+            <Menu onAction="#handleOpenOrderManagerPane" text="Quản lý đơn hàng">
+                <MenuItem onAction="#handleOpenOrderManagerPane" text="Quản lý đơn hàng" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" />
+            </Menu>
+            <Menu onAction="#handleOpenCouponManage" text="Quản lý mã giảm giá">
+                <MenuItem onAction="#handleOpenCouponManage" text="Quản lý mã giảm giá" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" />
+            </Menu>
+         <Menu onAction="#handleOpenCouponManage" text="Thống kê, báo cáo">
+            <items>
+               <MenuItem onAction="#handleOpenCouponManage" text="Quản lý mã giảm giá" />
+            </items>
+         </Menu>
+        </MenuBar>
+    </top>
+    <left>
+        <VBox>
+            <ImageView fitHeight="188.0" fitWidth="242.0" pickOnBounds="true" preserveRatio="true">
+                <Image url="@../img/logo.jpg" />
+            </ImageView>
+            <Button mnemonicParsing="false" onAction="#handleUserPane" prefHeight="49.0" prefWidth="242.0" text="Tài khoản" />
+            <Button fx:id="customerButton" layoutX="10.0" layoutY="421.0" mnemonicParsing="false" onAction="#handleReadersPane" prefHeight="49.0" prefWidth="242.0" text="Khách hàng" />
+            <Button layoutX="10.0" layoutY="470.0" mnemonicParsing="false" onAction="#handleBookSearchingPane" prefHeight="49.0" prefWidth="242.0" text="Kho" />
+            <Button fx:id="orderButton" layoutX="10.0" layoutY="519.0" mnemonicParsing="false" onAction="#handleOpenOrderManagerPane" prefHeight="49.0" prefWidth="242.0" text="Hóa đơn" />
+            <Button fx:id="purchaseOrderButton" layoutX="10.0" layoutY="516.0" mnemonicParsing="false" onAction="#handleOpenPurchaseOrderManagerPane" prefHeight="49.0" prefWidth="242.0" text="Phiếu nhập" />
+            <Button layoutX="10.0" layoutY="446.0" mnemonicParsing="false" onAction="#handleOpenOrderManagerPane" prefHeight="49.0" prefWidth="242.0" text="Báo cáo, thống kê" />
+            <padding>
+                <Insets top="5.0" />
+            </padding>
+        </VBox>
+    </left>
+    <center>
+        <StackPane>
+            <Pane fx:id="centerPane" prefHeight="627.0" prefWidth="670.0">
+                <ImageView layoutX="14.0" layoutY="14.0">
+                    <fitWidth>659.0</fitWidth>
+                    <fitHeight>638.0</fitHeight>
+                    <Image url="@../img/login_image.jpg" />
+                </ImageView>
+                <padding>
+                    <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                </padding>
+            </Pane>
+            <SplitPane fx:id="CustomerFigure" dividerPositions="0.5360501567398119" orientation="VERTICAL" prefHeight="627.0" prefWidth="670.0" visible="false">
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="681.0">
+                    <TableView fx:id="customerTable" layoutX="23.0" layoutY="52.0" prefHeight="274.0" prefWidth="599.0">
+                        <columns>
+                            <TableColumn fx:id="idColumn" prefWidth="33.0" text="ID" />
+                            <TableColumn fx:id="lastNameColumn" prefWidth="147.0" text="Họ" />
+                            <TableColumn fx:id="firstNameColumn" prefWidth="133.0" text="Tên" />
+                            <TableColumn fx:id="emailColumn" prefWidth="147.0" text="Email" />
+                            <TableColumn fx:id="phoneColumn" prefWidth="121.0" text="Sđt" />
+                        </columns>
+                    </TableView>
+                    <TextField fx:id="searchField" layoutX="23.0" layoutY="14.0" prefHeight="25.0" prefWidth="256.0" promptText="Nhập dữ liệu để tìm..." />
+                    <Button layoutX="286.0" layoutY="14.0" onAction="#handleCustomerSearch">
+                        <graphic>
+                            <ImageView fitHeight="24.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
+                                <Image url="@../img/magnifier.png" />
+                            </ImageView>
+                        </graphic>
+                    </Button>
+                    <Button layoutX="330.0" layoutY="14.0" onAction="#handleClearCustomerSearch">
+                        <graphic>
+                            <ImageView fitHeight="24.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
+                                <Image url="@../img/reset.png" />
+                            </ImageView>
+                        </graphic>
+                    </Button>
+                    <Button layoutX="633.0" layoutY="52.0" mnemonicParsing="false" onAction="#handleAddCustomer" prefHeight="15.0" prefWidth="10.0">
+                        <graphic>
+                            <ImageView fitHeight="24.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
+                                <Image url="@../img/add-user.png" />
+                            </ImageView>
+                        </graphic>
+                    </Button>
+                    <!--                             -->
+                </AnchorPane>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+                    <Label layoutX="162.0" layoutY="41.0" text="Tên:" />
+                    <Label layoutX="12.0" layoutY="14.0" text="Thông tin khách hàng" />
+                    <Label layoutX="158.0" layoutY="71.0" text="Email:" />
+                    <Label fx:id="showId" layoutX="114.0" layoutY="14.0" prefHeight="17.0" prefWidth="28.0" text="..." />
+                    <Label layoutX="370.0" layoutY="38.0" text="Phone:" />
+                    <Label layoutX="12.0" layoutY="88.0" text="Sách đã mua:" />
+                    <TableView fx:id="CustomerOrderTableView" layoutX="13.0" layoutY="113.0" prefHeight="143.0" prefWidth="655.0">
+                        <columns>
+                            <TableColumn fx:id="CustomerOrderIdColumn" minWidth="8.0" prefWidth="99.0" text="Mã hóa đơn" />
+                            <TableColumn fx:id="CustomerOrderDateColumn" prefWidth="199.0" text="Ngày mua" />
+                            <TableColumn fx:id="CustomerOrderCouponColumn" prefWidth="194.0" text="Mã giảm giá" />
+                            <TableColumn fx:id="CustomerOrderTotalAmountColumn" prefWidth="144.0" text="Thành tiền" />
+                        </columns>
+                    </TableView>
+                    <Label layoutX="396.0" layoutY="256.0" text="Tổng tiền đã mua:" />
+                    <Label fx:id="sumTotalAmountLabel" layoutX="502.0" layoutY="256.0" prefHeight="17.0" prefWidth="99.0" text="..." />
+                    <Button layoutX="633.0" layoutY="10.0" mnemonicParsing="false" onAction="#deleteCustomer" prefHeight="25.0" prefWidth="27.0" style="-fx-background-color: red;">
+                        <graphic>
+                            <ImageView fitHeight="24.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
+                                <Image url="@../img/trash-can.png" />
+                            </ImageView>
+                        </graphic>
+                    </Button>
+                    <Button layoutX="591.0" layoutY="10.0" mnemonicParsing="false" onAction="#handleEditCustomer" prefHeight="23.0" prefWidth="31.0">
+                        <graphic>
+                            <ImageView fitHeight="24.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
+                                <Image url="@../img/edit.png" />
+                            </ImageView>
+                        </graphic>
+                    </Button>
+                    <Button layoutX="551.0" layoutY="10.0" onAction="#exportCustomersToExcel" style="-fx-background-color: green;">
+                        <graphic>
+                            <ImageView fitHeight="24.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
+                                <Image url="@../img/excel.png" />
+                            </ImageView>
+                        </graphic>
+                    </Button>
+                    <Label layoutX="14.0" layoutY="41.0" text="Họ:" />
+                    <TextField fx:id="showLastName" layoutX="40.0" layoutY="37.0" prefHeight="25.0" prefWidth="109.0" />
+                    <TextField fx:id="showFirstName" layoutX="192.0" layoutY="37.0" prefHeight="25.0" prefWidth="163.0" />
+                    <TextField fx:id="showPhone" layoutX="414.0" layoutY="37.0" prefHeight="25.0" prefWidth="109.0" />
+                    <TextField fx:id="showEmail" layoutX="192.0" layoutY="67.0" prefHeight="25.0" prefWidth="163.0" />
+                </AnchorPane>
+            </SplitPane>
+            <!--            <SplitPane fx:id="bookPane" dividerPositions="0.7068965517241379" orientation="VERTICAL" prefHeight="627.0" prefWidth="670.0">-->
+            <!--                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">-->
+            <!--                    <TableView fx:id="bookTable" layoutX="12.0" layoutY="188.0" prefHeight="249.0" prefWidth="660.0">-->
+            <!--                        <columns>-->
+            <!--                            <TableColumn fx:id="idBookColumn" prefWidth="32.0" text="Id" />-->
+            <!--                            <TableColumn fx:id="titleBookColumn" prefWidth="116.0" text="Tên sách" />-->
+            <!--                            <TableColumn fx:id="authorBookColumn" prefWidth="133.0" text="Tác giả" />-->
+            <!--                            <TableColumn fx:id="publisherBookColumn" prefWidth="96.0" text="Nhà xuất bản" />-->
+            <!--                            <TableColumn fx:id="genreBookColumn" prefWidth="65.0" text="Thể loại" />-->
+            <!--                            <TableColumn fx:id="purchasepriceBookColumn" prefWidth="71.0" text="Giá nhập" />-->
+            <!--                            <TableColumn fx:id="priceBookColumn" minWidth="7.0" prefWidth="78.0" text="Giá niêm yết" />-->
+            <!--                            <TableColumn fx:id="quantityBookColumn" minWidth="0.0" prefWidth="42.0" text="Sl" />-->
+            <!--                        </columns>-->
+            <!--                    </TableView>-->
+            <!--                    <Label layoutX="15.0" layoutY="14.0" text="Tra cứu thông tin sách:">-->
+            <!--                        <font>-->
+            <!--                            <Font size="17.0" />-->
+            <!--                        </font>-->
+            <!--                    </Label>-->
+            <!--                    <TextField fx:id="IdTextField" layoutX="108.0" layoutY="61.0" prefHeight="31.0" prefWidth="146.0">-->
+            <!--                        <font>-->
+            <!--                            <Font size="15.0" />-->
+            <!--                        </font>-->
+            <!--                    </TextField>-->
+            <!--                    <Label layoutX="51.0" layoutY="63.0" text="Id sách:">-->
+            <!--                        <font>-->
+            <!--                            <Font size="15.0" />-->
+            <!--                        </font>-->
+            <!--                    </Label>-->
+            <!--                    <Label layoutX="45.0" layoutY="100.0" text="Tên sách:">-->
+            <!--                        <font>-->
+            <!--                            <Font size="15.0" />-->
+            <!--                        </font>-->
+            <!--                    </Label>-->
+            <!--                    <TextField fx:id="titleFieldText" layoutX="108.0" layoutY="95.0" prefHeight="31.0" prefWidth="146.0">-->
+            <!--                        <font>-->
+            <!--                            <Font size="15.0" />-->
+            <!--                        </font>-->
+            <!--                    </TextField>-->
+            <!--                    <Label layoutX="273.0" layoutY="63.0" text="Tên tác giả:">-->
+            <!--                        <font>-->
+            <!--                            <Font size="15.0" />-->
+            <!--                        </font>-->
+            <!--                    </Label>-->
+            <!--                    <TextField fx:id="authorTextField" layoutX="355.0" layoutY="58.0" prefHeight="31.0" prefWidth="146.0">-->
+            <!--                        <font>-->
+            <!--                            <Font size="15.0" />-->
+            <!--                        </font>-->
+            <!--                    </TextField>-->
+            <!--                    <Label layoutX="295.0" layoutY="100.0" text="Nhà XB:">-->
+            <!--                        <font>-->
+            <!--                            <Font size="15.0" />-->
+            <!--                        </font>-->
+            <!--                    </Label>-->
+            <!--                    <Label layoutX="293.0" layoutY="137.0" text="Thể loại:">-->
+            <!--                        <font>-->
+            <!--                            <Font size="15.0" />-->
+            <!--                        </font>-->
+            <!--                    </Label>-->
+            <!--                    <TextField fx:id="publisherTextField" layoutX="355.0" layoutY="95.0" prefHeight="31.0" prefWidth="146.0">-->
+            <!--                        <font>-->
+            <!--                            <Font size="15.0" />-->
+            <!--                        </font>-->
+            <!--                    </TextField>-->
+            <!--                    <Button layoutX="574.0" layoutY="98.0" mnemonicParsing="false" onAction="#handleBookSearchingButton">-->
+            <!--                        <graphic>-->
+            <!--                            <ImageView fitHeight="24.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">-->
+            <!--                                <Image url="@../img/magnifier.png" />-->
+            <!--                            </ImageView>-->
+            <!--                        </graphic>-->
+            <!--                    </Button>-->
+            <!--                    <Button layoutX="574.0" layoutY="61.0" onAction="#handleClearBookSearch">-->
+            <!--                        <graphic>-->
+            <!--                            <ImageView fitHeight="24.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">-->
+            <!--                                <Image url="@../img/reset.png" />-->
+            <!--                            </ImageView>-->
+            <!--                        </graphic>-->
+            <!--                    </Button>-->
+            <!--                    <ComboBox fx:id="genreComboBox" layoutX="355.0" layoutY="136.0" prefHeight="25.0" prefWidth="145.0" />-->
+            <!--                </AnchorPane>-->
+            <!--                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="277.0" prefWidth="681.0">-->
+            <!--                    <Label layoutX="11.0" layoutY="14.0" text="Thông tin sách:">-->
+            <!--                        <font>-->
+            <!--                            <Font size="15.0" />-->
+            <!--                        </font>-->
+            <!--                    </Label>-->
+            <!--                    <Label layoutX="14.0" layoutY="52.0" text="Tên sách:">-->
+            <!--                        <font>-->
+            <!--                            <Font size="15.0" />-->
+            <!--                        </font>-->
+            <!--                    </Label>-->
+            <!--                    <Label layoutX="26.0" layoutY="82.0" text="Tác giả:">-->
+            <!--                        <font>-->
+            <!--                            <Font size="15.0" />-->
+            <!--                        </font>-->
+            <!--                    </Label>-->
+            <!--                    <Label layoutX="24.0" layoutY="109.0" text="Nhà XB:">-->
+            <!--                        <font>-->
+            <!--                            <Font size="15.0" />-->
+            <!--                        </font>-->
+            <!--                    </Label>-->
+            <!--                    <Label layoutX="23.0" layoutY="140.0" text="Thể loại:">-->
+            <!--                        <font>-->
+            <!--                            <Font size="15.0" />-->
+            <!--                        </font>-->
+            <!--                    </Label>-->
+            <!--                    <Button layoutX="608.0" layoutY="12.0" mnemonicParsing="false" onAction="#deleteBook" prefHeight="25.0" prefWidth="27.0" style="-fx-background-color: red;">-->
+            <!--                        <graphic>-->
+            <!--                            <ImageView fitHeight="24.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">-->
+            <!--                                <Image url="@../img/trash-can.png" />-->
+            <!--                            </ImageView>-->
+            <!--                        </graphic>-->
+            <!--                    </Button>-->
+            <!--                    <Label layoutX="353.0" layoutY="82.0" text="Giá nhập:">-->
+            <!--                        <font>-->
+            <!--                            <Font size="15.0" />-->
+            <!--                        </font>-->
+            <!--                    </Label>-->
+            <!--                    <Label layoutX="357.0" layoutY="109.0" text="Giá bán:">-->
+            <!--                        <font>-->
+            <!--                            <Font size="15.0" />-->
+            <!--                        </font>-->
+            <!--                    </Label>-->
+            <!--                    <Label layoutX="292.0" layoutY="140.0" text="Số lượng tồn kho:">-->
+            <!--                        <font>-->
+            <!--                            <Font size="15.0" />-->
+            <!--                        </font>-->
+            <!--                    </Label>-->
+            <!--                    <TextField fx:id="bookIdTextField" disable="true" layoutX="119.0" layoutY="12.0" prefHeight="25.0" prefWidth="99.0" />-->
+            <!--                    <TextField fx:id="titleBookTextField" disable="true" layoutX="85.0" layoutY="50.0" prefHeight="25.0" prefWidth="153.0" />-->
+            <!--                    <TextField fx:id="purchasepriceBookTextField" disable="true" layoutX="423.0" layoutY="80.0" prefHeight="25.0" prefWidth="153.0" />-->
+            <!--                    <TextField fx:id="priceBookTextField" disable="true" layoutX="423.0" layoutY="107.0" prefHeight="25.0" prefWidth="153.0" />-->
+            <!--                    <TextField fx:id="quantityBookTextField" disable="true" layoutX="423.0" layoutY="138.0" prefHeight="25.0" prefWidth="153.0" />-->
+            <!--                    <ComboBox fx:id="authorBookComboBox" disable="true" layoutX="85.0" layoutY="80.0" prefHeight="25.0" prefWidth="153.0" />-->
+            <!--                    <ComboBox fx:id="publisherBookComboBox" disable="true" layoutX="85.0" layoutY="107.0" prefHeight="25.0" prefWidth="153.0" />-->
+            <!--                    <ComboBox fx:id="genreBookComboBox" disable="true" layoutX="85.0" layoutY="138.0" prefHeight="25.0" prefWidth="153.0" />-->
+            <!--                    <Button layoutX="520.0" layoutY="12.0" onAction="#editBookButton">-->
+            <!--                        <graphic>-->
+            <!--                            <ImageView fitHeight="24.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">-->
+            <!--                                <Image url="@../img/edit.png" />-->
+            <!--                            </ImageView>-->
+            <!--                        </graphic>-->
+            <!--                    </Button>-->
+            <!--                    <Button layoutX="565.0" layoutY="12.0" onAction="#addBookButton" style="-fx-background-color: cyan;">-->
+            <!--                        <graphic>-->
+            <!--                            <ImageView fitHeight="24.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">-->
+            <!--                                <Image url="@../img/add-book.png" />-->
+            <!--                            </ImageView>-->
+            <!--                        </graphic>-->
+            <!--                    </Button>-->
+            <!--                    <Button fx:id="submitButton" disable="true" layoutX="615.0" layoutY="107.0" mnemonicParsing="false" onAction="#submitOnAction" text="Submit" />-->
+            <!--                    <Button layoutX="473.0" layoutY="12.0" onAction="#exportBooksToExcel" style="-fx-background-color: green;">-->
+            <!--                        <graphic>-->
+            <!--                            <ImageView fitHeight="24.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">-->
+            <!--                                <Image url="@../img/excel.png" />-->
+            <!--                            </ImageView>-->
+            <!--                        </graphic>-->
+            <!--                    </Button>-->
+            <!--                    <Button fx:id="addGenreButton" disable="true" layoutX="246.0" layoutY="139.0" onAction="#handleAddGenreButtonAction" prefHeight="17.0" prefWidth="17.0">-->
+            <!--                        <graphic>-->
+            <!--                            <ImageView fitHeight="10.0" fitWidth="10.0" pickOnBounds="true" preserveRatio="true">-->
+            <!--                                <Image url="@../img/plussymbol.png" />-->
+            <!--                            </ImageView>-->
+            <!--                        </graphic>-->
+            <!--                    </Button>-->
+            <!--                    <Button fx:id="addPublisherButton" disable="true" layoutX="246.0" layoutY="108.0" onAction="#handleAddPublisherButtonAction" prefHeight="17.0" prefWidth="17.0">-->
+            <!--                        <graphic>-->
+            <!--                            <ImageView fitHeight="10.0" fitWidth="10.0" pickOnBounds="true" preserveRatio="true">-->
+            <!--                                <Image url="@../img/plussymbol.png" />-->
+            <!--                            </ImageView>-->
+            <!--                        </graphic>-->
+            <!--                    </Button>-->
+            <!--                    <Button fx:id="addAuthorButton" disable="true" layoutX="246.0" layoutY="80.0" onAction="#handleAddAuthorButtonAction" prefHeight="17.0" prefWidth="17.0">-->
+            <!--                        <graphic>-->
+            <!--                            <ImageView fitHeight="10.0" fitWidth="10.0" pickOnBounds="true" preserveRatio="true">-->
+            <!--                                <Image url="@../img/plussymbol.png" />-->
+            <!--                            </ImageView>-->
+            <!--                        </graphic>-->
+            <!--                    </Button>-->
+            <!--                </AnchorPane>-->
+            <!--            </SplitPane>-->
+            <!--            <Pane fx:id="DiscountCouponsPane" prefHeight="627.0" prefWidth="670.0" visible="false">-->
+            <!--                <TableView fx:id="discountCouponsTableView" layoutX="187.0" layoutY="73.0" prefHeight="461.0" prefWidth="310.0">-->
+            <!--                    <columns>-->
+            <!--                        <TableColumn fx:id="couponIdColumn" prefWidth="229.0" text="Tên mã giảm giá" />-->
+            <!--                        <TableColumn fx:id="couponPercentageColumn" prefWidth="60.0" text="\% giảm" />-->
+            <!--                    </columns>-->
+            <!--                </TableView>-->
+            <!--                <Button layoutX="524.0" layoutY="73.0" onAction="#handleAddCoupon" prefHeight="24.0" prefWidth="34.0">-->
+            <!--                    <graphic>-->
+            <!--                        <ImageView fitHeight="10.0" fitWidth="10.0" pickOnBounds="true" preserveRatio="true">-->
+            <!--                            <Image url="@../img/plussymbol.png" />-->
+            <!--                        </ImageView>-->
+            <!--                    </graphic>-->
+            <!--                </Button>-->
+            <!--                <Button layoutX="524.0" layoutY="112.0" mnemonicParsing="false" onAction="#handleDeleteCoupon" prefHeight="25.0" prefWidth="27.0" style="-fx-background-color: red;">-->
+            <!--                    <graphic>-->
+            <!--                        <ImageView fitHeight="24.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">-->
+            <!--                            <Image url="@../img/trash-can.png" />-->
+            <!--                        </ImageView>-->
+            <!--                    </graphic>-->
+            <!--                </Button>-->
+            <!--                <Button layoutX="524.0" layoutY="153.0" onAction="#exportCouponsToExcel" style="-fx-background-color: green;">-->
+            <!--                    <graphic>-->
+            <!--                        <ImageView fitHeight="24.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">-->
+            <!--                            <Image url="@../img/excel.png" />-->
+            <!--                        </ImageView>-->
+            <!--                    </graphic>-->
+            <!--                </Button>-->
+            <!--            </Pane>-->
+            <SplitPane fx:id="OrderPane" dividerPositions="0.43103448275862066" orientation="VERTICAL" prefHeight="200.0" prefWidth="160.0" visible="false">
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+                    <Button layoutX="568.0" layoutY="69.0" mnemonicParsing="false" onAction="#handleDeleteOrder" prefHeight="25.0" prefWidth="27.0" style="-fx-background-color: red;">
+                        <graphic>
+                            <ImageView fitHeight="24.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
+                                <Image url="@../img/trash-can.png" />
+                            </ImageView>
+                        </graphic>
+                    </Button>
+                    <Button layoutX="568.0" layoutY="36.0" onAction="#exportOrderToExcel" style="-fx-background-color: green;">
+                        <graphic>
+                            <ImageView fitHeight="24.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
+                                <Image url="@../img/excel.png" />
+                            </ImageView>
+                        </graphic>
+                    </Button>
+                    <TableView fx:id="orderTableView" layoutX="14.0" layoutY="110.0" prefHeight="152.0" prefWidth="654.0">
+                        <columns>
+                            <TableColumn fx:id="orderIDClolumn" prefWidth="26.0" text="ID" />
+                            <TableColumn fx:id="orderCutomerNameColumn" prefWidth="162.0" text="Tên khách hàng" />
+                            <TableColumn fx:id="orderUsernameColumn" prefWidth="115.0" text="Nhân viên tạo" />
+                            <TableColumn fx:id="orderCouponColumn" prefWidth="92.0" text="Mã giảm giá" />
+                            <TableColumn fx:id="orderDateColumn" minWidth="0.0" prefWidth="115.0" text="Ngày tạo" />
+                            <TableColumn fx:id="orderTotalAmountColumn" minWidth="0.0" prefWidth="121.0" text="Tổng tiền" />
+                        </columns>
+                    </TableView>
+                    <Label layoutX="14.0" layoutY="14.0" text="Thông tin hóa đơn:" />
+                    <Label layoutX="33.0" layoutY="40.0" text="Khách hàng:" />
+                    <ComboBox fx:id="orderCustomerNameComboBox" layoutX="110.0" layoutY="37.0" prefWidth="150.0" />
+                    <ComboBox fx:id="orderCouponComboBox" layoutX="371.0" layoutY="36.0" prefWidth="150.0" />
+                    <DatePicker fx:id="orderDatePicker" layoutX="109.0" layoutY="70.0" prefHeight="25.0" prefWidth="152.0" />
+                    <Label layoutX="294.0" layoutY="40.0" text="Mã giảm giá:" />
+                    <Label layoutX="46.0" layoutY="74.0" text="Ngày tạo:" />
+                    <Button layoutX="610.0" layoutY="69.0" onAction="#handleAddOrder" prefHeight="27.0" prefWidth="34.0">
+                        <graphic>
+                            <ImageView fitHeight="10.0" fitWidth="10.0" pickOnBounds="true" preserveRatio="true">
+                                <Image url="@../img/plussymbol.png" />
+                            </ImageView>
+                        </graphic>
+                    </Button>
+                    <Button layoutX="610.0" layoutY="36.0" mnemonicParsing="false" onAction="#handleEditOrder" prefHeight="23.0" prefWidth="31.0">
+                        <graphic>
+                            <ImageView fitHeight="24.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
+                                <Image url="@../img/edit.png" />
+                            </ImageView>
+                        </graphic>
+                    </Button>
+                </AnchorPane>
+                <AnchorPane fx:id="orderItemAnchorPane" disable="true" minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+                    <TableView fx:id="orderItemTableView" layoutX="14.0" layoutY="117.0" prefHeight="207.0" prefWidth="655.0">
+                        <columns>
+                            <TableColumn fx:id="orderItemIDColumn" prefWidth="31.0" text="ID" />
+                            <TableColumn fx:id="orderItemBookNameColumn" prefWidth="283.0" text="Tên Sách" />
+                            <TableColumn fx:id="orderItemQuantityColumn" prefWidth="72.0" text="Số lượng" />
+                            <TableColumn fx:id="orderItemPriceColumn" prefWidth="141.0" text="Giá niêm yết" />
+                            <TableColumn fx:id="orderItemTotalColumn" prefWidth="107.0" text="Thành tiền" />
+                        </columns>
+                    </TableView>
+                    <Label layoutX="21.0" layoutY="14.0" text="Thông tin hóa đơn chi tiết:" />
+                    <Label layoutX="463.0" layoutY="52.0" text="Số lượng:" />
+                    <Label layoutX="238.0" layoutY="51.0" text="Tên sách:" />
+                    <ComboBox fx:id="bookNameComboBox" layoutX="297.0" layoutY="47.0" prefWidth="150.0" />
+                    <TextField fx:id="quantityTextField" layoutX="528.0" layoutY="48.0" prefHeight="25.0" prefWidth="75.0" />
+                    <Button layoutX="480.0" layoutY="83.0" onAction="#exportOrderItemsToExcel" style="-fx-background-color: green;">
+                        <graphic>
+                            <ImageView fitHeight="24.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
+                                <Image url="@../img/excel.png" />
+                            </ImageView>
+                        </graphic>
+                    </Button>
+                    <Button layoutX="530.0" layoutY="83.0" mnemonicParsing="false" onAction="#handleDeleteOrderItems" prefHeight="25.0" prefWidth="27.0" style="-fx-background-color: red;">
+                        <graphic>
+                            <ImageView fitHeight="24.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
+                                <Image url="@../img/trash-can.png" />
+                            </ImageView>
+                        </graphic>
+                    </Button>
+                    <Button layoutX="579.0" layoutY="83.0" onAction="#handleAddOrderItems" prefHeight="27.0" prefWidth="34.0">
+                        <graphic>
+                            <ImageView fitHeight="10.0" fitWidth="10.0" pickOnBounds="true" preserveRatio="true">
+                                <Image url="@../img/plussymbol.png" />
+                            </ImageView>
+                        </graphic>
+                    </Button>
+                    <Button layoutX="626.0" layoutY="83.0" mnemonicParsing="false" onAction="#handleEditOrderItems" prefHeight="23.0" prefWidth="31.0">
+                        <graphic>
+                            <ImageView fitHeight="24.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
+                                <Image url="@../img/edit.png" />
+                            </ImageView>
+                        </graphic>
+                    </Button>
+                    <Label layoutX="497.0" layoutY="329.0" text="Tổng:" />
+                    <Label fx:id="sumTotalAmount1" layoutX="533.0" layoutY="329.0" text="..." />
+                </AnchorPane>
+            </SplitPane>
+            <TabPane fx:id="bookPane" prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE" visible="false">
+                <Tab text="Sách">
+                    <SplitPane dividerPositions="0.7068965517241379" orientation="VERTICAL">
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="454.0" prefWidth="738.0">
+                            <TableView fx:id="bookTable" layoutX="12.0" layoutY="188.0" prefHeight="249.0" prefWidth="660.0">
+                                <columns>
+                                    <TableColumn fx:id="idBookColumn" prefWidth="32.0" text="Id" />
+                                    <TableColumn fx:id="titleBookColumn" prefWidth="116.0" text="Tên sách" />
+                                    <TableColumn fx:id="authorBookColumn" prefWidth="133.0" text="Tác giả" />
+                                    <TableColumn fx:id="publisherBookColumn" prefWidth="96.0" text="Nhà xuất bản" />
+                                    <TableColumn fx:id="genreBookColumn" prefWidth="65.0" text="Thể loại" />
+                                    <TableColumn fx:id="purchasepriceBookColumn" prefWidth="71.0" text="Giá nhập" />
+                                    <TableColumn fx:id="priceBookColumn" minWidth="7.0" prefWidth="78.0" text="Giá niêm yết" />
+                                    <TableColumn fx:id="quantityBookColumn" minWidth="0.0" prefWidth="42.0" text="Sl" />
+                                </columns>
+                            </TableView>
+                            <Label layoutX="15.0" layoutY="14.0" text="Tra cứu thông tin sách:">
+                                <font>
+                                    <Font size="17.0" />
+                                </font>
+                            </Label>
+                            <TextField fx:id="IdTextField" layoutX="108.0" layoutY="61.0" prefHeight="31.0" prefWidth="146.0">
+                                <font>
+                                    <Font size="15.0" />
+                                </font>
+                            </TextField>
+                            <Label layoutX="51.0" layoutY="63.0" text="Id sách:">
+                                <font>
+                                    <Font size="15.0" />
+                                </font>
+                            </Label>
+                            <Label layoutX="45.0" layoutY="100.0" text="Tên sách:">
+                                <font>
+                                    <Font size="15.0" />
+                                </font>
+                            </Label>
+                            <TextField fx:id="titleFieldText" layoutX="108.0" layoutY="95.0" prefHeight="31.0" prefWidth="146.0">
+                                <font>
+                                    <Font size="15.0" />
+                                </font>
+                            </TextField>
+                            <Label layoutX="273.0" layoutY="63.0" text="Tên tác giả:">
+                                <font>
+                                    <Font size="15.0" />
+                                </font>
+                            </Label>
+                            <TextField fx:id="authorTextField" layoutX="355.0" layoutY="58.0" prefHeight="31.0" prefWidth="146.0">
+                                <font>
+                                    <Font size="15.0" />
+                                </font>
+                            </TextField>
+                            <Label layoutX="295.0" layoutY="100.0" text="Nhà XB:">
+                                <font>
+                                    <Font size="15.0" />
+                                </font>
+                            </Label>
+                            <Label layoutX="293.0" layoutY="137.0" text="Thể loại:">
+                                <font>
+                                    <Font size="15.0" />
+                                </font>
+                            </Label>
+                            <TextField fx:id="publisherTextField" layoutX="355.0" layoutY="95.0" prefHeight="31.0" prefWidth="146.0">
+                                <font>
+                                    <Font size="15.0" />
+                                </font>
+                            </TextField>
+                            <Button layoutX="574.0" layoutY="98.0" mnemonicParsing="false" onAction="#handleBookSearchingButton">
+                                <graphic>
+                                    <ImageView fitHeight="24.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
+                                        <Image url="@../img/magnifier.png" />
+                                    </ImageView>
+                                </graphic>
+                            </Button>
+                            <Button layoutX="574.0" layoutY="61.0" onAction="#handleClearBookSearch">
+                                <graphic>
+                                    <ImageView fitHeight="24.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
+                                        <Image url="@../img/reset.png" />
+                                    </ImageView>
+                                </graphic>
+                            </Button>
+                            <ComboBox fx:id="genreComboBox" layoutX="355.0" layoutY="136.0" prefHeight="25.0" prefWidth="145.0" />
+                        </AnchorPane>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="277.0" prefWidth="681.0">
+                            <Label layoutX="11.0" layoutY="14.0" text="Thông tin sách:">
+                                <font>
+                                    <Font size="15.0" />
+                                </font>
+                            </Label>
+                            <Label layoutX="14.0" layoutY="52.0" text="Tên sách:">
+                                <font>
+                                    <Font size="15.0" />
+                                </font>
+                            </Label>
+                            <Label layoutX="26.0" layoutY="82.0" text="Tác giả:">
+                                <font>
+                                    <Font size="15.0" />
+                                </font>
+                            </Label>
+                            <Label layoutX="25.0" layoutY="109.0" text="Nhà XB:">
+                                <font>
+                                    <Font size="15.0" />
+                                </font>
+                            </Label>
+                            <Label layoutX="24.0" layoutY="141.0" text="Thể loại:">
+                                <font>
+                                    <Font size="15.0" />
+                                </font>
+                            </Label>
+                            <Button layoutX="608.0" layoutY="12.0" mnemonicParsing="false" onAction="#deleteBook" prefHeight="25.0" prefWidth="27.0" style="-fx-background-color: red;">
+                                <graphic>
+                                    <ImageView fitHeight="24.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
+                                        <Image url="@../img/trash-can.png" />
+                                    </ImageView>
+                                </graphic>
+                            </Button>
+                            <Label layoutX="340.0" layoutY="83.0" text="Giá nhập:">
+                                <font>
+                                    <Font size="15.0" />
+                                </font>
+                            </Label>
+                            <Label layoutX="345.0" layoutY="110.0" text="Giá bán:">
+                                <font>
+                                    <Font size="15.0" />
+                                </font>
+                            </Label>
+                            <Label layoutX="280.0" layoutY="142.0" text="Số lượng tồn kho:">
+                                <font>
+                                    <Font size="15.0" />
+                                </font>
+                            </Label>
+                            <TextField fx:id="bookIdTextField" disable="true" layoutX="119.0" layoutY="12.0" prefHeight="25.0" prefWidth="99.0" />
+                            <TextField fx:id="titleBookTextField" disable="true" layoutX="85.0" layoutY="50.0" prefHeight="25.0" prefWidth="153.0" />
+                            <TextField fx:id="purchasepriceBookTextField" disable="true" layoutX="403.0" layoutY="81.0" prefHeight="25.0" prefWidth="153.0" />
+                            <TextField fx:id="priceBookTextField" disable="true" layoutX="403.0" layoutY="107.0" prefHeight="25.0" prefWidth="153.0" />
+                            <TextField fx:id="quantityBookTextField" disable="true" layoutX="403.0" layoutY="139.0" prefHeight="25.0" prefWidth="153.0" />
+                            <ComboBox fx:id="authorBookComboBox" disable="true" layoutX="85.0" layoutY="80.0" prefHeight="25.0" prefWidth="153.0" />
+                            <ComboBox fx:id="publisherBookComboBox" disable="true" layoutX="85.0" layoutY="107.0" prefHeight="25.0" prefWidth="153.0" />
+                            <ComboBox fx:id="genreBookComboBox" disable="true" layoutX="85.0" layoutY="139.0" prefHeight="25.0" prefWidth="153.0" />
+                            <Button layoutX="520.0" layoutY="12.0" onAction="#editBookButton">
+                                <graphic>
+                                    <ImageView fitHeight="24.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
+                                        <Image url="@../img/edit.png" />
+                                    </ImageView>
+                                </graphic>
+                            </Button>
+                            <Button layoutX="565.0" layoutY="12.0" onAction="#addBookButton" style="-fx-background-color: cyan;">
+                                <graphic>
+                                    <ImageView fitHeight="24.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
+                                        <Image url="@../img/add-book.png" />
+                                    </ImageView>
+                                </graphic>
+                            </Button>
+                            <Button fx:id="submitButton" disable="true" layoutX="572.0" layoutY="108.0" mnemonicParsing="false" onAction="#submitOnAction" text="Submit" />
+                            <Button layoutX="473.0" layoutY="12.0" onAction="#exportBooksToExcel" style="-fx-background-color: green;">
+                                <graphic>
+                                    <ImageView fitHeight="24.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
+                                        <Image url="@../img/excel.png" />
+                                    </ImageView>
+                                </graphic>
+                            </Button>
+                            <Button fx:id="addGenreButton" disable="true" layoutX="246.0" layoutY="140.0" onAction="#handleAddGenreButtonAction" prefHeight="17.0" prefWidth="17.0">
+                                <graphic>
+                                    <ImageView fitHeight="10.0" fitWidth="10.0" pickOnBounds="true" preserveRatio="true">
+                                        <Image url="@../img/plussymbol.png" />
+                                    </ImageView>
+                                </graphic>
+                            </Button>
+                            <Button fx:id="addPublisherButton" disable="true" layoutX="246.0" layoutY="108.0" onAction="#handleAddPublisherButtonAction" prefHeight="17.0" prefWidth="17.0">
+                                <graphic>
+                                    <ImageView fitHeight="10.0" fitWidth="10.0" pickOnBounds="true" preserveRatio="true">
+                                        <Image url="@../img/plussymbol.png" />
+                                    </ImageView>
+                                </graphic>
+                            </Button>
+                            <Button fx:id="addAuthorButton" disable="true" layoutX="246.0" layoutY="81.0" onAction="#handleAddAuthorButtonAction" prefHeight="17.0" prefWidth="17.0">
+                                <graphic>
+                                    <ImageView fitHeight="10.0" fitWidth="10.0" pickOnBounds="true" preserveRatio="true">
+                                        <Image url="@../img/plussymbol.png" />
+                                    </ImageView>
+                                </graphic>
+                            </Button>
+                        </AnchorPane>
+                    </SplitPane>
+                </Tab>
+                <Tab onSelectionChanged="#handleOpenCouponManage" text="Mã giảm giá">
+                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                        <TableView fx:id="discountCouponsTableView" layoutX="187.0" layoutY="73.0" prefHeight="461.0" prefWidth="310.0">
+                            <columns>
+                                <TableColumn fx:id="couponIdColumn" prefWidth="229.0" text="Tên mã giảm giá" />
+                                <TableColumn fx:id="couponPercentageColumn" prefWidth="60.0" text="\% giảm" />
+                            </columns>
+                        </TableView>
+                        <Button layoutX="524.0" layoutY="73.0" onAction="#handleAddCoupon" prefHeight="24.0" prefWidth="34.0">
+                            <graphic>
+                                <ImageView fitHeight="10.0" fitWidth="10.0" pickOnBounds="true" preserveRatio="true">
+                                    <Image url="@../img/plussymbol.png" />
+                                </ImageView>
+                            </graphic>
+                        </Button>
+                        <Button layoutX="524.0" layoutY="112.0" mnemonicParsing="false" onAction="#handleDeleteCoupon" prefHeight="25.0" prefWidth="27.0" style="-fx-background-color: red;">
+                            <graphic>
+                                <ImageView fitHeight="24.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
+                                    <Image url="@../img/trash-can.png" />
+                                </ImageView>
+                            </graphic>
+                        </Button>
+                        <Button layoutX="524.0" layoutY="153.0" onAction="#exportCouponsToExcel" style="-fx-background-color: green;">
+                            <graphic>
+                                <ImageView fitHeight="24.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
+                                    <Image url="@../img/excel.png" />
+                                </ImageView>
+                            </graphic>
+                        </Button>
+                    </AnchorPane>
+                </Tab>
+            </TabPane>
+            <SplitPane fx:id="userSplitane" dividerPositions="0.21417797888386123" orientation="VERTICAL" prefHeight="200.0" prefWidth="160.0" visible="false">
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+                    <Label layoutX="14.0" layoutY="14.0" text="Thông tin tài khoản:">
+                        <font>
+                            <Font size="18.0" />
+                        </font>
+                    </Label>
+                    <Label alignment="CENTER_RIGHT" layoutX="20.0" layoutY="45.0" text="Họ và tên:">
+                        <font>
+                            <Font size="18.0" />
+                        </font>
+                    </Label>
+                    <Label alignment="CENTER_RIGHT" layoutX="20.0" layoutY="73.0" text="Số điện thoại:">
+                        <font>
+                            <Font size="18.0" />
+                        </font>
+                    </Label>
+                    <Label alignment="CENTER_RIGHT" layoutX="20.0" layoutY="102.0" text="Email:">
+                        <font>
+                            <Font size="18.0" />
+                        </font>
+                    </Label>
+                    <Label fx:id="usserNameLabel" layoutX="109.0" layoutY="45.0" text="...">
+                        <font>
+                            <Font size="18.0" />
+                        </font>
+                    </Label>
+                    <Label alignment="CENTER_RIGHT" layoutX="290.0" layoutY="45.0" text="Chức vụ:">
+                        <font>
+                            <Font size="18.0" />
+                        </font>
+                    </Label>
+                    <Label layoutX="343.0" layoutY="102.0" />
+                    <Label fx:id="userPhoneLabel" layoutX="137.0" layoutY="73.0" text="...">
+                        <font>
+                            <Font size="18.0" />
+                        </font>
+                    </Label>
+                    <Label fx:id="userEmailLabel" layoutX="69.0" layoutY="102.0" text="...">
+                        <font>
+                            <Font size="18.0" />
+                        </font>
+                    </Label>
+                    <Label fx:id="userPermissionLabel" layoutX="367.0" layoutY="45.0" text="...">
+                        <font>
+                            <Font size="18.0" />
+                        </font>
+                    </Label>
+                </AnchorPane>
+                <AnchorPane fx:id="adminPermissionAnchorPane" minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+                    <Label layoutX="14.0" layoutY="14.0" text="Quản lý nhân viên:">
+                        <font>
+                            <Font size="18.0" />
+                        </font>
+                    </Label>
+                    <TableView fx:id="userTableView" layoutX="14.0" layoutY="141.0" prefHeight="364.0" prefWidth="657.0">
+                        <columns>
+                            <TableColumn fx:id="userIdColumn" prefWidth="33.0" text="ID" />
+                            <TableColumn fx:id="userNameColumn" prefWidth="122.0" text="Tên nhân viên" />
+                            <TableColumn fx:id="userPhoneColumn" prefWidth="96.0" text="SĐT" />
+                            <TableColumn fx:id="userEmailColumn" prefWidth="85.0" text="Email" />
+                            <TableColumn fx:id="userPerColumn" prefWidth="119.0" text="Chức vụ" />
+                            <TableColumn fx:id="userUsernameColumn" prefWidth="119.0" text="Tên tài khoản" />
+                            <TableColumn fx:id="userPassWordColumn" prefWidth="60.0" text="Mật khẩu" />
+                        </columns>
+                    </TableView>
+                    <Label alignment="CENTER_RIGHT" layoutX="37.0" layoutY="41.0">
+                        <font>
+                            <Font size="18.0" />
+                        </font>
+                    </Label>
+                    <Label alignment="CENTER_RIGHT" layoutX="30.0" layoutY="41.0" text="Tên nhân viên:">
+                        <font>
+                            <Font size="18.0" />
+                        </font>
+                    </Label>
+                    <Label alignment="CENTER_RIGHT" layoutX="30.0" layoutY="68.0" text="Tên tài khoản:">
+                        <font>
+                            <Font size="18.0" />
+                        </font>
+                    </Label>
+                    <Label alignment="CENTER_RIGHT" layoutX="63.0" layoutY="95.0" text="Mật khẩu:">
+                        <font>
+                            <Font size="18.0" />
+                        </font>
+                    </Label>
+                    <Label alignment="CENTER_RIGHT" layoutX="325.0" layoutY="41.0" text="Số điện thoại:">
+                        <font>
+                            <Font size="18.0" />
+                        </font>
+                    </Label>
+                    <Label alignment="CENTER_RIGHT" layoutX="387.0" layoutY="68.0" text="Email:">
+                        <font>
+                            <Font size="18.0" />
+                        </font>
+                    </Label>
+                    <Label alignment="CENTER_RIGHT" layoutX="366.0" layoutY="95.0" text="Chức vụ:">
+                        <font>
+                            <Font size="18.0" />
+                        </font>
+                    </Label>
+                    <TextField fx:id="userNameTX" layoutX="153.0" layoutY="42.0" />
+                    <TextField fx:id="userUsernameTX" layoutX="153.0" layoutY="69.0" />
+                    <TextField fx:id="userPassTX" layoutX="153.0" layoutY="96.0" />
+                    <TextField fx:id="userPhoneTX" layoutX="443.0" layoutY="42.0" />
+                    <TextField fx:id="userEmailTX" layoutX="443.0" layoutY="69.0" />
+                    <ComboBox fx:id="userPerCB" layoutX="443.0" layoutY="97.0" prefWidth="150.0" />
+                    <Button layoutX="613.0" layoutY="42.0" mnemonicParsing="false" onAction="#handleDeleteUser" prefHeight="25.0" prefWidth="27.0" style="-fx-background-color: red;">
+                        <graphic>
+                            <ImageView fitHeight="24.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
+                                <Image url="@../img/trash-can.png" />
+                            </ImageView>
+                        </graphic>
+                    </Button>
+                    <Button layoutX="613.0" layoutY="68.0" onAction="#handleAddUser" prefHeight="27.0" prefWidth="34.0">
+                        <graphic>
+                            <ImageView fitHeight="10.0" fitWidth="10.0" pickOnBounds="true" preserveRatio="true">
+                                <Image url="@../img/plussymbol.png" />
+                            </ImageView>
+                        </graphic>
+                    </Button>
+                    <Button layoutX="613.0" layoutY="96.0" mnemonicParsing="false" onAction="#handleEditUser" prefHeight="23.0" prefWidth="31.0">
+                        <graphic>
+                            <ImageView fitHeight="24.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
+                                <Image url="@../img/edit.png" />
+                            </ImageView>
+                        </graphic>
+                    </Button>
+                </AnchorPane>
+            </SplitPane>
+            <SplitPane fx:id="purchaseOrderPane" dividerPositions="0.43103448275862066" layoutX="10.0" layoutY="10.0" orientation="VERTICAL" prefHeight="200.0" prefWidth="160.0" visible="false">
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+                    <Button layoutX="568.0" layoutY="69.0" mnemonicParsing="false" onAction="#handleDeletePurchaseOrder" prefHeight="25.0" prefWidth="27.0" style="-fx-background-color: red;">
+                        <graphic>
+                            <ImageView fitHeight="24.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
+                                <Image url="@../img/trash-can.png" />
+                            </ImageView>
+                        </graphic>
+                    </Button>
+                    <Button layoutX="568.0" layoutY="36.0" onAction="#exportOrderToExcel" style="-fx-background-color: green;">
+                        <graphic>
+                            <ImageView fitHeight="24.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
+                                <Image url="@../img/excel.png" />
+                            </ImageView>
+                        </graphic>
+                    </Button>
+                    <TableView fx:id="purchaseOrderTableView" layoutX="14.0" layoutY="110.0" prefHeight="152.0" prefWidth="654.0">
+                        <columns>
+                            <TableColumn fx:id="purchaseOrderIDClolumn" prefWidth="26.0" text="ID" />
+                            <TableColumn fx:id="purchaseOrderPublisherNameColumn" prefWidth="222.0" text="Tên NXB" />
+                            <TableColumn fx:id="purchaseOrderUsernameColumn" prefWidth="142.0" text="Nhân viên tạo" />
+                            <TableColumn fx:id="purchaseOrderDateColumn" minWidth="0.0" prefWidth="119.0" text="Ngày tạo" />
+                            <TableColumn fx:id="purchaseOrderTotalAmountColumn" minWidth="0.0" prefWidth="117.0" text="Tổng tiền" />
+                        </columns>
+                    </TableView>
+                    <Label layoutX="14.0" layoutY="14.0" text="Thông tin hóa đơn nhập:" />
+                    <Label layoutX="33.0" layoutY="40.0" text="Nhà xuất bản:" />
+                    <ComboBox fx:id="purchaseOrderPublisherNameComboBox" layoutX="110.0" layoutY="37.0" prefWidth="150.0" />
+                    <DatePicker fx:id="purchaseOrderDatePicker" layoutX="109.0" layoutY="70.0" prefHeight="25.0" prefWidth="152.0" />
+                    <Label layoutX="46.0" layoutY="74.0" text="Ngày tạo:" />
+                    <Button layoutX="610.0" layoutY="69.0" onAction="#handleAddPurchaseOrder" prefHeight="27.0" prefWidth="34.0">
+                        <graphic>
+                            <ImageView fitHeight="10.0" fitWidth="10.0" pickOnBounds="true" preserveRatio="true">
+                                <Image url="@../img/plussymbol.png" />
+                            </ImageView>
+                        </graphic>
+                    </Button>
+                    <Button layoutX="610.0" layoutY="36.0" mnemonicParsing="false" onAction="#handleEditPurchaseOrder" prefHeight="23.0" prefWidth="31.0">
+                        <graphic>
+                            <ImageView fitHeight="24.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
+                                <Image url="@../img/edit.png" />
+                            </ImageView>
+                        </graphic>
+                    </Button>
+                </AnchorPane>
+                <AnchorPane fx:id="purchaseOrderItemAnchorPane" disable="true" minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+                    <TableView fx:id="purchaseOrderItemTableView" layoutX="14.0" layoutY="117.0" prefHeight="207.0" prefWidth="655.0">
+                        <columns>
+                            <TableColumn fx:id="purchaseOrderItemIDColumn" prefWidth="31.0" text="ID" />
+                            <TableColumn fx:id="purchaseOrderItemBookNameColumn" prefWidth="283.0" text="Tên Sách" />
+                            <TableColumn fx:id="purchaseOrderItemQuantityColumn" prefWidth="72.0" text="Số lượng" />
+                            <TableColumn fx:id="purchaseOrderItemPriceColumn" prefWidth="141.0" text="Giá nhập" />
+                            <TableColumn fx:id="purchaseOrderItemTotalColumn" prefWidth="107.0" text="Thành tiền" />
+                        </columns>
+                    </TableView>
+                    <Label layoutX="21.0" layoutY="14.0" text="Thông tin hóa đơn chi tiết:" />
+                    <Label layoutX="463.0" layoutY="52.0" text="Số lượng:" />
+                    <Label layoutX="238.0" layoutY="51.0" text="Tên sách:" />
+                    <ComboBox fx:id="bookNameComboBox1" layoutX="297.0" layoutY="47.0" prefWidth="150.0" />
+                    <TextField fx:id="quantityTextField1" layoutX="528.0" layoutY="48.0" prefHeight="25.0" prefWidth="75.0" />
+                    <Button layoutX="480.0" layoutY="83.0" onAction="#exportOrderItemsToExcel" style="-fx-background-color: green;">
+                        <graphic>
+                            <ImageView fitHeight="24.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
+                                <Image url="@../img/excel.png" />
+                            </ImageView>
+                        </graphic>
+                    </Button>
+                    <Button layoutX="530.0" layoutY="83.0" mnemonicParsing="false" onAction="#handleDeletePurchaseOrderItem" prefHeight="25.0" prefWidth="27.0" style="-fx-background-color: red;">
+                        <graphic>
+                            <ImageView fitHeight="24.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
+                                <Image url="@../img/trash-can.png" />
+                            </ImageView>
+                        </graphic>
+                    </Button>
+                    <Button layoutX="579.0" layoutY="83.0" onAction="#handleAddPurchaseOrderItems" prefHeight="27.0" prefWidth="34.0">
+                        <graphic>
+                            <ImageView fitHeight="10.0" fitWidth="10.0" pickOnBounds="true" preserveRatio="true">
+                                <Image url="@../img/plussymbol.png" />
+                            </ImageView>
+                        </graphic>
+                    </Button>
+                    <Button layoutX="626.0" layoutY="83.0" mnemonicParsing="false" onAction="#handleEditPurchaseOrderItems" prefHeight="23.0" prefWidth="31.0">
+                        <graphic>
+                            <ImageView fitHeight="24.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
+                                <Image url="@../img/edit.png" />
+                            </ImageView>
+                        </graphic>
+                    </Button>
+                    <Label layoutX="497.0" layoutY="329.0" text="Tổng:" />
+                    <Label fx:id="sumTotalAmount11" layoutX="533.0" layoutY="329.0" text="..." />
+                </AnchorPane>
+            </SplitPane>
+            <TabPane prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE" visible="false">
+                <tabs>
+                    <Tab text="Doanh thu">
+                        <content>
+                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                        <children>
+                           <Label layoutX="22.0" layoutY="23.0" text="Từ ngày:" />
+                           <Label layoutX="18.0" layoutY="48.0" text="Đến ngày:" />
+                           <DatePicker layoutX="83.0" layoutY="18.0" />
+                           <DatePicker layoutX="83.0" layoutY="45.0" />
+                           <Button layoutX="311.0" layoutY="31.0" mnemonicParsing="false" text="Thống kê" />
+                           <TableView layoutX="31.0" layoutY="96.0" prefHeight="516.0" prefWidth="632.0">
+                             <columns>
+                               <TableColumn prefWidth="110.0" text="Ngày lập" />
+                               <TableColumn prefWidth="130.0" text="Mã hóa đơn" />
+                                 <TableColumn prefWidth="111.0" text="Tên khách hàng" />
+                                 <TableColumn prefWidth="108.0" text="Nhân viên lập" />
+                                 <TableColumn prefWidth="136.0" text="Tổng tiền" />
+                             </columns>
+                           </TableView>
+                        </children></AnchorPane>
+                        </content>
+                    </Tab>
+                    <Tab text="Nhân viên">
+                        <content>
+                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                        <children>
+                           <ComboBox layoutX="207.0" layoutY="26.0" prefWidth="150.0" />
+                           <Button layoutX="372.0" layoutY="26.0" mnemonicParsing="false" text="Tìm kiếm" />
+                           <TableView layoutX="28.0" layoutY="72.0" prefHeight="544.0" prefWidth="640.0">
+                             <columns>
+                               <TableColumn prefWidth="146.0" text="Ngày lập" />
+                               <TableColumn prefWidth="114.0" text="Mã hóa đơn" />
+                                 <TableColumn prefWidth="131.0" text="Mã hóa đơn" />
+                                 <TableColumn prefWidth="99.0" text="Tổng tiền" />
+                                 <TableColumn prefWidth="123.0" text="Mã nhân viên" />
+                             </columns>
+                           </TableView>
+                        </children></AnchorPane>
+                        </content>
+                    </Tab>
+                    <Tab text="Sản phẩm">
+                        <content>
+                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                        <children>
+                           <ComboBox layoutX="269.0" layoutY="26.0" prefWidth="150.0" />
+                           <Button layoutX="318.0" layoutY="61.0" mnemonicParsing="false" text="Thống kê" />
+                           <TableView layoutX="22.0" layoutY="109.0" prefHeight="515.0" prefWidth="651.0">
+                             <columns>
+                               <TableColumn prefWidth="52.0" text="Mã SP" />
+                               <TableColumn prefWidth="172.0" text="Tên SP" />
+                                 <TableColumn prefWidth="110.0" text="Giá nhập" />
+                                 <TableColumn prefWidth="60.0" text="Giá bán" />
+                                 <TableColumn prefWidth="107.0" text="Số lượng kho" />
+                                 <TableColumn prefWidth="121.0" text="Số lượng bán được" />
+                             </columns>
+                           </TableView>
+                        </children></AnchorPane>
+                        </content>
+                    </Tab>
+                </tabs>
+            </TabPane>
+        </StackPane>
+    </center>
+</BorderPane>
